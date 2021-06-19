@@ -1,0 +1,78 @@
+{
+  "name": "hello-word",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development electron-forge start",
+    "package": "cross-env NODE_ENV=production electron-forge package",
+    "make": "electron-forge make",
+    "serve": "webpack serve --mode development --env env=dev",
+    "build": "webpack --mode production --env env=prod",
+    "beta": "webpack --mode production --env env=beta"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "@electron-forge/maker-deb": "^6.0.0-beta.57",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.57",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
+    "@electron-forge/maker-zip": "^6.0.0-beta.57",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "cross-env": "^7.0.3",
+    "electron": "^13.1.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^15.9.7",
+    "vue-style-loader": "^4.1.3",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.39.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "vue": "^2.6.14",
+    "vue-cookies": "^1.7.4",
+    "vue-router": "^3.5.1",
+    "vue-router-multiguard": "^1.0.3"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "name": "Hello Word",
+        "productName": "Hello Word",
+        "executableName": "Hello Word Desktop",
+        "ignore": [
+          "node_modules",
+          "renderer",
+          "webpack.config.js"
+        ]
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "hello_world"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
